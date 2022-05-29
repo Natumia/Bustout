@@ -7,10 +7,15 @@ var mousePos = Vector2.ZERO
 
 var maxSpeed =  300
 
+# This will need to be set in the Scene Manager and Accessed with the
+# Pause Button. 
 func _ready():
-	# This will need to be set in the Scene Manager and Accessed with the
-	# Pause Button. 
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+
+# This allows me to escape out of game confinement.
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO

@@ -8,6 +8,8 @@
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 128, 200 )
+continuous_cd = 2
+levelSpeed = 80
 
 [node name="Bricks" type="Node2D" parent="."]
 

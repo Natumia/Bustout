@@ -8,7 +8,7 @@ friction = 0.0
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id=9]
-radius = 2.23607
+radius = 3.16228
 
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource( 8 )
@@ -19,7 +19,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-startSpeed = 100
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -8, -8 )
