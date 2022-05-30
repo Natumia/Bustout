@@ -5,6 +5,13 @@ var mousePos = Vector2.ZERO
 
 var maxSpeed =  300
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func _physics_process(_delta):
 	velocity = Vector2.ZERO
 	mousePos = get_local_mouse_position()

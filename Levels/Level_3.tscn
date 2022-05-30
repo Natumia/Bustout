@@ -5,93 +5,93 @@
 [ext_resource path="res://Bricks/Brick.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/LevelGenerics/Levels.gd" type="Script" id=4]
 
-[node name="Level_1" type="Node2D"]
+[node name="Level_3" type="Node2D"]
 script = ExtResource( 4 )
-levelSpeed = 100
+levelSpeed = 110
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
 
 [node name="Bricks" type="Node2D" parent="."]
 
 [node name="Brick" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 112, 96 )
+position = Vector2( 48, 88 )
 
 [node name="Brick4" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 128, 96 )
+position = Vector2( 80, 88 )
+health = 3
 
 [node name="Brick2" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 144, 96 )
-
-[node name="Brick5" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 160, 96 )
+position = Vector2( 160, 88 )
+health = 3
 
 [node name="Brick6" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 80, 96 )
+position = Vector2( 122, 144 )
+health = 2
 
 [node name="Brick7" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 64, 96 )
+position = Vector2( 106, 144 )
+health = 2
 
 [node name="Brick8" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 176, 96 )
+position = Vector2( 192, 88 )
 
 [node name="Brick3" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 96, 96 )
+position = Vector2( 138, 144 )
+health = 2
 
 [node name="Brick9" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 112, 80 )
+position = Vector2( 48, 72 )
 health = 2
 
 [node name="Brick10" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 128, 80 )
-health = 2
+position = Vector2( 80, 72 )
+health = 3
 
 [node name="Brick11" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 144, 80 )
-health = 2
-
-[node name="Brick12" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 160, 80 )
-health = 2
+position = Vector2( 160, 72 )
+health = 3
 
 [node name="Brick13" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 80, 80 )
+position = Vector2( 122, 128 )
 health = 2
 
 [node name="Brick14" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 64, 80 )
+position = Vector2( 106, 128 )
 health = 2
 
 [node name="Brick15" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 176, 80 )
+position = Vector2( 192, 72 )
 health = 2
 
 [node name="Brick16" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 96, 80 )
+position = Vector2( 138, 128 )
 health = 2
 
 [node name="Brick17" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 112, 64 )
+position = Vector2( 48, 56 )
 
 [node name="Brick18" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 128, 64 )
+position = Vector2( 80, 56 )
+health = 3
 
 [node name="Brick19" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 144, 64 )
-
-[node name="Brick20" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 160, 64 )
+position = Vector2( 160, 56 )
+health = 3
 
 [node name="Brick21" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 80, 64 )
+position = Vector2( 122, 112 )
+health = 2
 
 [node name="Brick22" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 64, 64 )
+position = Vector2( 106, 112 )
+health = 2
 
 [node name="Brick23" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 176, 64 )
+position = Vector2( 192, 56 )
 
 [node name="Brick24" parent="Bricks" instance=ExtResource( 3 )]
-position = Vector2( 96, 64 )
+position = Vector2( 138, 112 )
+health = 2
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 128, 218 )

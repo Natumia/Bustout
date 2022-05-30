@@ -13,3 +13,7 @@ func spawn_ball():
 func check_balls():
 	var ballCount = get_tree().get_nodes_in_group("Ball").size()
 	return ballCount
+
+func check_bricks():
+	var brickCount = get_tree().get_nodes_in_group("Brick").size()
+	return brickCount

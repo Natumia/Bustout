@@ -1,6 +1,0 @@
-[gd_scene format=2]
-
-[node name="LoseBall" type="StaticBody2D" groups=["LoseBall"]]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -16, -16, 272, -16, 272, 256, -16, 256, -16, -40, -48, -40, -48, 280, 304, 280, 304, -40, -16, -40 )
