@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Ball/Ball.gd" type="Script" id=1]
 [ext_resource path="res://Ball/Ball.png" type="Texture" id=2]
@@ -64,13 +64,15 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 3.16228
+[sub_resource type="CircleShape2D" id=12]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 3.0
 
 [node name="Ball" type="RigidBody2D" groups=["Ball"]]
 physics_material_override = SubResource( 8 )
 gravity_scale = 0.0
-continuous_cd = 2
 linear_damp = 0.0
 angular_damp = 0.0
 script = ExtResource( 1 )
@@ -88,12 +90,12 @@ anims/RESET = SubResource( 10 )
 anims/Spawn = SubResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 9 )
+shape = SubResource( 12 )
 disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 9 )
+shape = SubResource( 13 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

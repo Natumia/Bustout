@@ -5,7 +5,7 @@ signal lose_ball
 
 onready var animPlayer = $AnimationPlayer
 
-var ballSpeed = 50
+var ballSpeed = 80
 
 const MAX_SPEED = 250
 

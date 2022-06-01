@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Levels/Level_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://System/SceneManager.gd" type="Script" id=2]
@@ -144,10 +144,66 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "LoadIn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [node name="SceneManager" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
@@ -255,14 +311,27 @@ autoplay = "Pulse"
 anims/Pulse = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
-[node name="Transition" type="ColorRect" parent="GUI"]
+[node name="LevelTransition" type="ColorRect" parent="GUI"]
+visible = false
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 224.0
 margin_bottom = 248.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Transition"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/LevelTransition"]
+autoplay = "RESET"
 anims/FadeIn = SubResource( 5 )
 anims/FadeOut = SubResource( 3 )
 anims/RESET = SubResource( 4 )
+
+[node name="FullTransition" type="ColorRect" parent="GUI"]
+visible = false
+margin_right = 256.0
+margin_bottom = 248.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/FullTransition"]
+autoplay = "LoadIn"
+anims/LoadIn = SubResource( 6 )
+anims/RESET = SubResource( 7 )

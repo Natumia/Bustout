@@ -6,7 +6,7 @@ onready var stageNumber = $GUI/StageNumber
 onready var scoreAmount = $GUI/ScoreAmount
 onready var livesAmount = $GUI/LivesAmount
 
-onready var transition = $GUI/Transition/AnimationPlayer
+onready var transition = $GUI/LevelTransition/AnimationPlayer
 
 var transitionPaused = false
 
@@ -18,7 +18,6 @@ var player = null
 var scoreMult = null
 
 func _ready():
-	$GUI/Transition.visible = false
 	currentLevel = $CurrentLevel.get_children()[0]
 	scoreMult = 1 + int(currentLevel.name) * .3
 
@@ -38,6 +37,7 @@ func goto_next_level():
 	if !ResourceLoader.exists(str("res://Levels/Level_", levelNumber + 1, ".tscn")):
 		print("Next level not found!")
 	else:
+		get_tree().paused = true
 		transitionPaused = true
 		transition.play("FadeOut")
 	
@@ -47,13 +47,14 @@ func transition_start():
 	var levelNumber = int(currentLevel.name)
 	var nextLevel = load(str("res://Levels/Level_", levelNumber + 1, ".tscn")).instance()
 	currentLevel.queue_free()
-	currentLevel.queue_free()
 	$CurrentLevel.add_child(nextLevel)
 	currentLevel = $CurrentLevel.get_node(str("Level_", levelNumber + 1))
+	currentLevel.levelSpeed = 80 + levelNumber * 5
 	player = currentLevel.get_node("Player")
 	transition.play("FadeIn")
 
 func transition_end():
+	get_tree().paused = false
 	transitionPaused = false
 
 func _input(event):

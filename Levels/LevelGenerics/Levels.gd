@@ -4,6 +4,9 @@ onready var ballScene = preload("res://Ball/Ball.tscn")
 
 export var levelSpeed = 80
 
+func _ready():
+	levelSpeed = clamp(levelSpeed, 80, 250)
+
 func spawn_ball():
 	var ball = ballScene.instance()
 	add_child(ball)
