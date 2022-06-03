@@ -10,8 +10,8 @@ config_version=4
 
 [application]
 
-config/name="Breakout"
-run/main_scene="res://System/SceneManager.tscn"
+config/name="Bustout"
+run/main_scene="res://Title.tscn"
 config/icon="res://icon.png"
 
 [display]
