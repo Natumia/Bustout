@@ -2,7 +2,7 @@ extends Node
 
 var configSave = "user://Bustout.dat"
 
-var scores = [100, 250, 500, 7500, 1000]
+var scores = [10000, 25000, 50000, 75000, 100000]
 
 func save_scores(inputScore):
 	scores.sort()

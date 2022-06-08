@@ -236,7 +236,7 @@ custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center]Twitter - @NatumiaDormin[/center]"
-text = "Twitter - @NatumiaDormin"
+text = "[center]Twitter - @NatumiaDormin[/center]"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
 root_node = NodePath("../Sprite")

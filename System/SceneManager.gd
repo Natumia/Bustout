@@ -14,6 +14,8 @@ var currentLevel = null
 var lives = 3
 var score = 0
 
+var extraLifeScore = 10000
+
 var player = null
 var scoreMult = null
 
@@ -22,6 +24,12 @@ func _ready():
 	scoreMult = 1 + int(currentLevel.name) * .3
 
 func _process(_delta):
+	
+	if score >= extraLifeScore:
+		lives += 1
+		livesAmount.set_bbcode(str("[center]", lives, "[/center]"))
+		extraLifeScore = extraLifeScore + extraLifeScore * 2
+	
 	if currentLevel.check_balls() == 0:
 		spawnLabel.visible = true
 	else:
@@ -59,8 +67,7 @@ func transition_end():
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") and currentLevel.check_balls() == 0 and transitionPaused == false:
-		currentLevel.spawn_ball()
-		var ball = currentLevel.get_node("Ball")
+		var ball = currentLevel.spawn_ball()
 		ball.connect("score_change", self, "adjust_score")
 		ball.connect("lose_ball", self, "lose_life")
 	if event.is_action_pressed("ui_end"):
@@ -87,12 +94,15 @@ func adjust_score(value):
 	scoreAmount.set_bbcode(str("[center]", res, "[/center]"))
 
 func lose_life():
-	lives -= 1
-	if lives == 0:
-		$GUI/FullTransition/AnimationPlayer.play("LoadOut")
-		HighScores.save_scores(score)
-	else:
-		livesAmount.set_bbcode(str("[center]", lives, "[/center]"))
+	# I check if it was the last ball that was lost. I guess the signaled function
+	# happens faster than the queue_free() on the ball.
+	if currentLevel.check_balls() == 1:
+		lives -= 1
+		if lives == 0:
+			$GUI/FullTransition/AnimationPlayer.play("LoadOut")
+			HighScores.save_scores(score)
+		else:
+			livesAmount.set_bbcode(str("[center]", lives, "[/center]"))
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "LoadOut":

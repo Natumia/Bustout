@@ -12,6 +12,7 @@ func spawn_ball():
 	add_child(ball)
 	ball.set_position(Vector2(128, 200))
 	ball.ballSpeed = levelSpeed
+	return ball
 
 func check_balls():
 	var ballCount = get_tree().get_nodes_in_group("Ball").size()
