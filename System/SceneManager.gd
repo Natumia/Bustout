@@ -89,7 +89,12 @@ func adjust_score(value):
 func lose_life():
 	lives -= 1
 	if lives == 0:
+		$GUI/FullTransition/AnimationPlayer.play("LoadOut")
 		HighScores.save_scores(score)
-		get_tree().change_scene("res://Title.tscn")
 	else:
 		livesAmount.set_bbcode(str("[center]", lives, "[/center]"))
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "LoadOut":
+		if get_tree().change_scene("res://Title.tscn") != OK:
+			print("Failed to change scene to Title.")

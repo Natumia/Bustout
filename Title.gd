@@ -5,7 +5,6 @@ onready var titleAnim = $Control/AnimationPlayer
 onready var tranAnim = $CanvasLayer/ColorRect/AnimationPlayer
 onready var highScores = $HighScores
 
-# Going to parse the player scores on this node.
 func _ready():
 	HighScores.load_scores()
 	
@@ -39,4 +38,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		highScores.visible = true
 		pressStart.visible = true
 	if anim_name == "Fadeout":
-		get_tree().change_scene("res://System/SceneManager.tscn")
+		if get_tree().change_scene("res://System/SceneManager.tscn") != OK:
+			print("Failed to change scene to SceneManager.")
